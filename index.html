@@ -6,50 +6,78 @@
 <title>Interactive Gulf Map</title>
 
 <style>
-    body {
-        margin: 0;
-        background: #000;
-        overflow-x: hidden; /* επιτρέπουμε scroll στο ύψος */
-    }
 
-    /* Container που κρατάει την εικόνα */
-    #image-container {
-        position: relative;
-        width: 100%;
-        display: block; /* κρίσιμο */
-    }
+/* ---------------------------------------------------------
+   🔥 FULL CSS RESET — Ακυρώνει ΟΛΟ το CSS του GitHub Pages
+---------------------------------------------------------- */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    background: #000 !important;
+}
 
-    #bg-image {
-        width: 100%;
-        height: auto;
-        display: block; /* κρίσιμο */
-    }
+img {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+    box-sizing: content-box !important;
+}
 
-    /* Hotspots */
-    .hotspot {
-        position: absolute;
-        border-radius: 50%;
-        background-color: rgba(0,0,0,0); /* αόρατο */
-        cursor: pointer;
-        transform: translate(-50%, -50%);
-        transition: background-color 0.2s ease;
-    }
+/* ---------------------------------------------------------
+   📌 Container της εικόνας
+---------------------------------------------------------- */
+#image-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
-    .hotspot:hover {
-        background-color: rgba(0,0,0,0.4); /* μαύρο ημιδιαφανές hover */
-    }
+/* ---------------------------------------------------------
+   📌 Responsive εικόνα
+---------------------------------------------------------- */
+#bg-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
-    /* Hamburger icon πάνω δεξιά */
-    #menu-icon {
-        position: fixed;
-        top: 15px;
-        right: 20px;
-        font-size: 32px;
-        color: white;
-        cursor: pointer;
-        z-index: 9999;
-        user-select: none;
-    }
+/* ---------------------------------------------------------
+   📌 Hotspots (αόρατα, με μαύρο hover)
+---------------------------------------------------------- */
+.hotspot {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.2s ease;
+}
+
+.hotspot:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* ---------------------------------------------------------
+   📌 Hamburger icon
+---------------------------------------------------------- */
+#menu-icon {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    user-select: none;
+}
+
 </style>
 </head>
 
