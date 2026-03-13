@@ -1,39 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <title>Counting Ships</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Background</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #000;
+        overflow: hidden;
+    }
+
+    /* Container που κρατάει την εικόνα */
+    #image-container {
+        position: relative;
+        width: 100vw;
+        height: auto;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #bg-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-width: 100%;
+    }
+
+    /* Hotspots */
+    .hotspot {
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0); /* αόρατο */
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.2s ease;
+    }
+
+    .hotspot:hover {
+        background-color: rgba(0,0,0,0.4); /* μαύρο ημιδιαφανές hover */
+    }
+
+    /* Hamburger icon πάνω δεξιά */
+    #menu-icon {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        font-size: 32px;
+        color: white;
+        cursor: pointer;
+        z-index: 9999;
+        user-select: none;
+    }
+</style>
 </head>
+
 <body>
 
-<img src="Background.png" usemap="#map1" />
+<div id="menu-icon">≡</div>
 
-<map name="map1">
+<div id="image-container">
+    <img id="bg-image" src="background.png" alt="Background">
+</div>
 
-  <!-- A: Μεγάλο παραλληλόγραμμο -->
-  <area 
-    shape="rect" 
-    coords="1040,250,1760,820" 
-    href="https://drive.google.com/file/d/1mz5YVPL2m84IeCbFDHGZ1y2hQCBbsXcW/view?usp=drive_link"
-    target="_blank"
-  />
+<script>
+    const ORIGINAL_WIDTH = 1047;
+    const ORIGINAL_HEIGHT = 689;
 
-  <!-- B: Μπλε Dubai -->
-  <area 
-    shape="rect" 
-    coords="1180,520,1340,650" 
-    href="#" 
-  />
+    // Hotspot size: 17px at full resolution → convert to vw units
+    const HOTSPOT_SIZE_PX = 17;
+    const HOTSPOT_SIZE_VW = (HOTSPOT_SIZE_PX / ORIGINAL_WIDTH) * 100;
 
-  <!-- C: Μπλε Khasab -->
-  <area 
-    shape="rect" 
-    coords="1280,430,1380,500" 
-    href="https://drive.google.com/file/d/1BnRq7dKz055GiXTEknNeIm9oOzoB0mzw/view?usp=drive_link"
-    target="_blank"
-  />
+    // Φόρτωμα του pixel_coordinates.txt
+    fetch("pixel_coordinates.txt")
+        .then(response => response.text())
+        .then(text => {
+            const lines = text.trim().split("\n");
+            const entries = lines.slice(1); // skip header
 
-</map>
+            entries.forEach(line => {
+                const [url, xStr, yStr] = line.split(/\t+/);
+                const x = parseFloat(xStr);
+                const y = parseFloat(yStr);
+
+                createHotspot(url, x, y);
+            });
+        });
+
+    function createHotspot(url, x, y) {
+        const container = document.getElementById("image-container");
+
+        const hotspot = document.createElement("div");
+        hotspot.className = "hotspot";
+
+        // Αναλογική τοποθέτηση
+        const leftPercent = (x / ORIGINAL_WIDTH) * 100;
+        const topPercent = (y / ORIGINAL_HEIGHT) * 100;
+
+        hotspot.style.left = leftPercent + "%";
+        hotspot.style.top = topPercent + "%";
+
+        // Αναλογικό μέγεθος hotspot
+        hotspot.style.width = HOTSPOT_SIZE_VW + "vw";
+        hotspot.style.height = HOTSPOT_SIZE_VW + "vw";
+
+        hotspot.onclick = () => {
+            window.location.href = url; // ίδιο tab
+        };
+
+        container.appendChild(hotspot);
+    }
+</script>
 
 </body>
 </html>
