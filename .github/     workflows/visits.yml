@@ -9,25 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Read visits.json
-        id: readjson
+      - name: Update visits.json
         run: |
-          count=$(jq '.visits' visits.json)
-          echo "count=$count" >> $GITHUB_OUTPUT
-
-      - name: Increment counter
-        run: |
-          newcount=$(( ${{ steps.readjson.outputs.count }} + 1 ))
-          echo "{ \"visits\": $newcount }" > visits.json
+          VISITS=$(jq '.visits + 1' visits.json)
+          echo "{\"visits\": $VISITS}" > visits.json
 
       - name: Commit changes
         run: |
-          timestamp=$(date +"%Y-%m-%d %H:%M")
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
           git add visits.json
-          git commit -m "Visit recorded at $timestamp"
+          git commit -m "Visit recorded at $(date)"
           git push
