@@ -22,7 +22,11 @@ https://drive.google.com/file/d/1WCdZb4m1Qm4YLigYfb2ulun-BTcYuy8N/view?usp=drive
 https://drive.google.com/file/d/15_EgX3WxhOZrCbknRdsxOmcT760jAbqc/view?usp=drivesdk	765	460
 	900	600
 	953	574
-https://quantomental.com	507	409
+	507	409
+https://quantomental.com	143	565
+https://docs.google.com/spreadsheets/d/13_JDdNyDTPhWOdDnEkxVz8wumMktwtp5/edit?usp=drive_link&ouid=114647624931636745483&rtpof=true&sd=true	170	55
+https://drive.google.com/file/d/1UaelPKDuR0u9DyvDr1SOfcCZqYuH-mtc/view?usp=drive_link	303	55
+https://drive.google.com/file/d/1PoqvXS3-5hCNyReya35o0drXTB6loolb/view?usp=drive_link	410 55
 
 
 
