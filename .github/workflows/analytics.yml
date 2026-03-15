@@ -1,0 +1,76 @@
+name: Analytics Engine
+
+on:
+  repository_dispatch:
+    types: [analytics_event]
+
+jobs:
+  update-analytics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Read event payload
+        id: payload
+        run: |
+          echo "FINGERPRINT=${{ github.event.client_payload.fingerprint }}" >> $GITHUB_ENV
+          echo "DATE=${{ github.event.client_payload.date }}" >> $GITHUB_ENV
+
+      - name: Ensure analytics folder exists
+        run: |
+          mkdir -p analytics
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Update unique.json
+        run: |
+          FILE=analytics/unique.json
+          FINGERPRINT="$FINGERPRINT"
+
+          # Create file if missing
+          if [ ! -f "$FILE" ]; then
+            echo '{"fingerprints":[]}' > "$FILE"
+          fi
+
+          # Check if fingerprint exists
+          EXISTS=$(jq --arg fp "$FINGERPRINT" '.fingerprints | index($fp)' "$FILE")
+
+          # If not exists, append it
+          if [ "$EXISTS" = "null" ]; then
+            jq --arg fp "$FINGERPRINT" '.fingerprints += [$fp]' "$FILE" > tmp.json && mv tmp.json "$FILE"
+          fi
+
+      - name: Update daily.json
+        run: |
+          FILE=analytics/daily.json
+          DATE="$DATE"
+          FINGERPRINT="$FINGERPRINT"
+
+          # Create file if missing
+          if [ ! -f "$FILE" ]; then
+            echo '{}' > "$FILE"
+          fi
+
+          # If date key doesn't exist, create empty list
+          if jq -e --arg d "$DATE" '.[$d]' "$FILE" | grep -q null; then
+            jq --arg d "$DATE" '.[$d] = []' "$FILE" > tmp.json && mv tmp.json "$FILE"
+          fi
+
+          # Check if fingerprint already counted today
+          EXISTS=$(jq --arg d "$DATE" --arg fp "$FINGERPRINT" '.[$d] | index($fp)' "$FILE")
+
+          # If not exists, append it
+          if [ "$EXISTS" = "null" ]; then
+            jq --arg d "$DATE" --arg fp "$FINGERPRINT" '.[$d] += [$fp]' "$FILE" > tmp.json && mv tmp.json "$FILE"
+          fi
+
+      - name: Commit analytics updates
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add analytics/*.json
+          git commit -m "Analytics update at $(date)" || echo "No changes to commit"
+          git push
