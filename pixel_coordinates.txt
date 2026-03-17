@@ -11,7 +11,7 @@ https://drive.google.com/file/d/1G46LXRvmKNWV7p8pO-RlNWKdAKow9GOJ/view?usp=drive
 https://drive.google.com/file/d/1COZvANYpYzgbDSstqtPa2oNRYt4vDAR7/view?usp=drivesdk	808	418
 https://drive.google.com/file/d/1jOE75r5jydTAGBQE8SMRIdbLQTjgqKAD/view?usp=drivesdk	779	408
 https://drive.google.com/file/d/1X8x8o2uQ9JhJqThbmgjf3BxyZ4nCiURs/view?usp=drivesdk	952	623
-https://drive.google.com/file/d/1xqfQs1nZrw7p2R3PiZkXyiWj783myeyQ/view?usp=drivesdk	926	600
+https://drive.google.com/file/d/1po--WXOEQUq_XEUSZPZOqd4_5kgZvuHm/view?usp=drive_link	926	600
 https://drive.google.com/file/d/1DQygwzIkKvqUpOHiKjX6XCrsVe18oEA1/view?usp=drivesdk	793	525
 https://drive.google.com/file/d/1caDevFn5TV3vssdisdnwf2Nan1-BHTUm/view?usp=drivesdk	823	525
 https://drive.google.com/file/d/1XMlctOejFtCC0Ald9SH_o-U2JIJIJyVw/view?usp=drivesdk	951	506
@@ -20,8 +20,8 @@ https://drive.google.com/file/d/17q-3hb_97tRvnhYbl6j4DbldCzbGMX4X/view?usp=drive
 https://drive.google.com/file/d/1_99zFngjHjp16AAQGM3ZYC0xFanmejyu/view?usp=drivesdk	812	460
 https://drive.google.com/file/d/1WCdZb4m1Qm4YLigYfb2ulun-BTcYuy8N/view?usp=drivesdk	790	460
 https://drive.google.com/file/d/15_EgX3WxhOZrCbknRdsxOmcT760jAbqc/view?usp=drivesdk	765	460
-	900	600
-	953	574
+https://drive.google.com/file/d/139HuGbfhyyC3urFLutzERkBJ9PC-Mo_O/view?usp=drive_link	900	600
+https://drive.google.com/file/d/16ZO8lnf2Id2Qold9MfR-EFvwO3VK53bU/view?usp=drive_link	953	574
 https://drive.google.com/file/d/1pBuQrJV2HgSu17Gh77QfMjta4_Z8Leyg/view?usp=drive_link	507	409
 https://quantomental.com	143	565
 https://drive.google.com/file/d/1yR6bRXkhPIGFyDrUE6QuV4vZVA1E3L2S/view?usp=drive_link	170	55
