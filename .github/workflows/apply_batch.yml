@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
       - name: Apply pending visits
         run: |
           # Αν δεν υπάρχει pending file, δεν κάνουμε τίποτα
