@@ -3,7 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interactive Gulf Map</title>
+<title>Strait of Hormuz Live Vessel Tracking</title>
+
+<!-- 🔍 SEO + OpenGraph -->
+<meta name="description" content="Interactive vessel tracking map for Strait of Hormuz with time-lapse video analysis. Monitor real-time transit patterns and geopolitical shipping impacts.">
+<meta property="og:title" content="Strait of Hormuz Live Vessel Tracking | Interactive Map">
+<meta property="og:description" content="Track vessel activity, access time-lapse videos, analyze shipping disruptions in the Strait of Hormuz corridor.">
+<meta property="og:image" content="screenshot.png">
+<meta name="robots" content="index, follow">
+
+<!-- 📌 Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "name": "Strait of Hormuz Vessel Tracking",
+  "description": "Interactive map tracking vessel activity and transit patterns in the Strait of Hormuz",
+  "url": "https://dxmix77.github.io/UnderWay/",
+  "keywords": "Strait of Hormuz, maritime tracking, vessel traffic, geopolitical analysis, dxmix77",
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "Strait of Hormuz, Persian Gulf"
+  },
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-28"
+}
+</script>
 
 <style>
 
@@ -27,6 +52,25 @@ img {
     max-width: 100% !important;
     height: auto !important;
     box-sizing: content-box !important;
+}
+
+/* ---------------------------------------------------------
+   📌 Header styling
+---------------------------------------------------------- */
+h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.subtitle {
+    text-align: center;
+    color: #cccccc;
+    margin-bottom: 1.5rem;
+    font-family: Arial, sans-serif;
 }
 
 /* ---------------------------------------------------------
@@ -83,6 +127,10 @@ img {
 
 <body>
 
+<!-- ⭐ NEW: SEO Header -->
+<h1>Strait of Hormuz Vessel Tracking</h1>
+<p class="subtitle">Interactive Map with Real-Time Transit Analysis</p>
+
 <div id="menu-icon">≡</div>
 
 <div id="image-container">
@@ -93,16 +141,14 @@ img {
     const ORIGINAL_WIDTH = 1237;
     const ORIGINAL_HEIGHT = 718;
 
-    // Hotspot size: 17px at full resolution → convert to vw units
     const HOTSPOT_SIZE_PX = 17;
     const HOTSPOT_SIZE_VW = (HOTSPOT_SIZE_PX / ORIGINAL_WIDTH) * 100;
 
-    // Φόρτωμα του pixel_coordinates.txt
     fetch("pixel_coordinates.txt")
         .then(response => response.text())
         .then(text => {
             const lines = text.trim().split("\n");
-            const entries = lines.slice(1); // skip header
+            const entries = lines.slice(1);
 
             entries.forEach(line => {
                 const [url, xStr, yStr] = line.split(/\t+/);
@@ -119,32 +165,29 @@ img {
         const hotspot = document.createElement("div");
         hotspot.className = "hotspot";
 
-        // Αναλογική τοποθέτηση
         const leftPercent = (x / ORIGINAL_WIDTH) * 100;
         const topPercent = (y / ORIGINAL_HEIGHT) * 100;
 
         hotspot.style.left = leftPercent + "%";
         hotspot.style.top = topPercent + "%";
 
-        // Αναλογικό μέγεθος hotspot
         hotspot.style.width = HOTSPOT_SIZE_VW + "vw";
         hotspot.style.height = HOTSPOT_SIZE_VW + "vw";
 
         hotspot.onclick = () => {
-            window.location.href = url; // ίδιο tab
+            window.location.href = url;
         };
 
         container.appendChild(hotspot);
     }
 </script>
+
 <script>
 (function() {
-    // Αν ο χρήστης έχει ήδη μετρηθεί σε αυτό το session, σταμάτα
     if (sessionStorage.getItem("visitCounted")) {
         return;
     }
 
-    // Κάνε trigger το GitHub Action (χωρίς token)
     fetch("https://api.github.com/repos/dxmix77/UnderWay/actions/workflows/trigger.yml/dispatches", {
         method: "POST",
         headers: {
@@ -156,9 +199,9 @@ img {
         })
     });
 
-    // Σημείωσε ότι ο χρήστης μετρήθηκε
     sessionStorage.setItem("visitCounted", "true");
 })();
-</script>   
+</script>
+
 </body>
 </html>
