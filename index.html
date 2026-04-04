@@ -1,234 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Map of Strait of Hormuz</title>
+<!-- Google Analytics tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C2KPH250K"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-7C2KPH250K'); </script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Interactive Map of Strait of Hormuz</title>
 
-  <meta
-    name="description"
-    content="Interactive vessel tracking map for the Strait of Hormuz with time-lapse video analysis. Monitor transit patterns and shipping activity."
-  >
-  <meta property="og:title" content="Strait of Hormuz Live Vessel Tracking | Interactive Map">
-  <meta
-    property="og:description"
-    content="Track vessel activity, access time-lapse videos, and analyze shipping disruptions in the Strait of Hormuz corridor."
-  >
-  <meta property="og:image" content="screenshot.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dxmix77.github.io/UnderWay/">
-  <meta name="robots" content="index, follow">
+   <meta
+     name="description"
+     content="Interactive vessel tracking map for the Strait of Hormuz
+with time-lapse video analysis. Monitor transit patterns and shipping
+activity."
+   >
+   <meta property="og:title" content="Strait of Hormuz Live Vessel
+Tracking | Interactive Map">
+   <meta
+     property="og:description"
+     content="Track vessel activity, access time-lapse videos, and
+analyze shipping disruptions in the Strait of Hormuz corridor."
+   >
+   <meta property="og:image" content="screenshot.png">
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://dxmix77.github.io/UnderWay/">
+   <meta name="robots" content="index, follow">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "DataCatalog",
-    "name": "Strait of Hormuz Vessel Tracking",
-    "description": "Interactive map tracking vessel activity and transit patterns in the Strait of Hormuz",
-    "url": "https://dxmix77.github.io/UnderWay/",
-    "keywords": [
-      "Strait of Hormuz",
-      "vessel traffic",
-      "maritime tracking",
-      "shipping analysis",
-      "time-lapse videos"
-    ],
-    "spatialCoverage": {
-      "@type": "Place",
-      "name": "Strait of Hormuz, Persian Gulf"
-    },
-    "datePublished": "2026-03-01",
-    "dateModified": "2026-03-28"
-  }
-  </script>
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "DataCatalog",
+     "name": "Strait of Hormuz Vessel Tracking",
+     "description": "Interactive map tracking vessel activity and
+transit patterns in the Strait of Hormuz",
+     "url": "https://dxmix77.github.io/UnderWay/",
+     "keywords": [
+       "Strait of Hormuz",
+       "vessel traffic",
+       "maritime tracking",
+       "shipping analysis",
+       "time-lapse videos"
+     ],
+     "spatialCoverage": {
+       "@type": "Place",
+       "name": "Strait of Hormuz, Persian Gulf"
+     },
+     "datePublished": "2026-03-01",
+     "dateModified": "2026-03-28"
+   }
+   </script>
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-      background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
+   <style>
+     html, body {
+       margin: 0;
+       padding: 0;
+       width: 100%;
+       max-width: 100%;
+       overflow-x: hidden;
+       background: #000;
+       color: #fff;
+       font-family: Arial, sans-serif;
+     }
 
-    * {
-      box-sizing: border-box;
-    }
+     * {
+       box-sizing: border-box;
+     }
 
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin: 0;
-      padding: 0;
-    }
+     img {
+       display: block;
+       max-width: 100%;
+       height: auto;
+       margin: 0;
+       padding: 0;
+     }
 
-    h1 {
-      font-size: 2.5rem;
-      color: #ffffff;
-      margin: 20px 16px 8px;
-      text-align: center;
-    }
+     h1 {
+       font-size: 2.5rem;
+       color: #ffffff;
+       margin: 20px 16px 8px;
+       text-align: center;
+     }
 
-    .subtitle {
-      text-align: center;
-      color: #cccccc;
-      margin: 0 16px 24px;
-      font-size: 1rem;
-    }
+     .subtitle {
+       text-align: center;
+       color: #cccccc;
+       margin: 0 16px 24px;
+       font-size: 1rem;
+     }
 
-    #menu-icon {
-      position: fixed;
-      top: 12px;
-      left: 12px;
-      z-index: 1000;
-      color: #fff;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-      user-select: none;
-      display: none;
-    }
+     #menu-icon {
+       position: fixed;
+       top: 12px;
+       left: 12px;
+       z-index: 1000;
+       color: #fff;
+       font-size: 28px;
+       line-height: 1;
+       cursor: pointer;
+       user-select: none;
+       display: none;
+     }
 
-    #image-container {
-      position: relative;
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+     #image-container {
+       position: relative;
+       width: 100%;
+       height: auto;
+       display: block;
+     }
 
-    #bg-image {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+     #bg-image {
+       width: 100%;
+       height: auto;
+       display: block;
+     }
 
-    .hotspot {
-      position: absolute;
-      border-radius: 50%;
-      background-color: rgba(0, 0, 0, 0);
-      cursor: pointer;
-      transform: translate(-50%, -50%);
-      transition: background-color 0.2s ease;
-    }
+     .hotspot {
+       position: absolute;
+       border-radius: 50%;
+       background-color: rgba(0, 0, 0, 0);
+       cursor: pointer;
+       transform: translate(-50%, -50%);
+       transition: background-color 0.2s ease;
+     }
 
-    .hotspot:hover {
-      background-color: rgba(0, 0, 0, 0.4);
-    }
+     .hotspot:hover {
+       background-color: rgba(0, 0, 0, 0.4);
+     }
 
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 1.8rem;
-      }
+     @media (max-width: 768px) {
+       h1 {
+         font-size: 1.8rem;
+       }
 
-      .subtitle {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
+       .subtitle {
+         font-size: 0.95rem;
+       }
+     }
+   </style>
 </head>
 <body>
-  <h1>Interactive Map of the Strait of Hormuz</h1>
-  <p class="subtitle">Click the dots and draw your conclusions</p>
+   <h1>Interactive Map of the Strait of Hormuz</h1>
+   <p class="subtitle">Click the dots and draw your conclusions</p>
 
-  <div id="menu-icon" aria-hidden="true">≡</div>
+   <div id="menu-icon" aria-hidden="true">≡</div>
 
-  <div id="image-container">
-    <img id="bg-image" src="gulf.png" alt="Map of the Strait of Hormuz with vessel tracking points">
-  </div>
+   <div id="image-container">
+     <img id="bg-image" src="gulf.png" alt="Map of the Strait of Hormuz
+with vessel tracking points">
+   </div>
 
-  <script>
-    const ORIGINAL_WIDTH = 1237;
-    const ORIGINAL_HEIGHT = 718;
-    const HOTSPOT_SIZE_PX = 17;
+   <script>
+     const ORIGINAL_WIDTH = 1237;
+     const ORIGINAL_HEIGHT = 718;
+     const HOTSPOT_SIZE_PX = 17;
 
-    function getHotspotSizePx() {
-      const renderedWidth = document.getElementById("bg-image").clientWidth || ORIGINAL_WIDTH;
-      return (HOTSPOT_SIZE_PX / ORIGINAL_WIDTH) * renderedWidth;
-    }
+     function getHotspotSizePx() {
+       const renderedWidth =
+document.getElementById("bg-image").clientWidth || ORIGINAL_WIDTH;
+       return (HOTSPOT_SIZE_PX / ORIGINAL_WIDTH) * renderedWidth;
+     }
 
-    function createHotspot(url, x, y) {
-      const container = document.getElementById("image-container");
-      const hotspot = document.createElement("div");
-      hotspot.className = "hotspot";
+     function createHotspot(url, x, y) {
+       const container = document.getElementById("image-container");
+       const hotspot = document.createElement("div");
+       hotspot.className = "hotspot";
 
-      const leftPercent = (x / ORIGINAL_WIDTH) * 100;
-      const topPercent = (y / ORIGINAL_HEIGHT) * 100;
-      const sizePx = getHotspotSizePx();
+       const leftPercent = (x / ORIGINAL_WIDTH) * 100;
+       const topPercent = (y / ORIGINAL_HEIGHT) * 100;
+       const sizePx = getHotspotSizePx();
 
-      hotspot.style.left = leftPercent + "%";
-      hotspot.style.top = topPercent + "%";
-      hotspot.style.width = sizePx + "px";
-      hotspot.style.height = sizePx + "px";
+       hotspot.style.left = leftPercent + "%";
+       hotspot.style.top = topPercent + "%";
+       hotspot.style.width = sizePx + "px";
+       hotspot.style.height = sizePx + "px";
 
-      hotspot.addEventListener("click", () => {
-        window.location.href = url;
-      });
+       hotspot.addEventListener("click", () => {
+         window.location.href = url;
+       });
 
-      container.appendChild(hotspot);
-    }
+       container.appendChild(hotspot);
+     }
 
-    function loadHotspots() {
-      fetch("pixel_coordinates.txt")
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Could not load pixel_coordinates.txt");
-          }
-          return response.text();
-        })
-        .then(text => {
-          const lines = text.trim().split("\n");
-          const entries = lines.slice(1);
+     function loadHotspots() {
+       fetch("pixel_coordinates.txt")
+         .then(response => {
+           if (!response.ok) {
+             throw new Error("Could not load pixel_coordinates.txt");
+           }
+           return response.text();
+         })
+         .then(text => {
+           const lines = text.trim().split("\n");
+           const entries = lines.slice(1);
 
-          entries.forEach(line => {
-            const [url, xStr, yStr] = line.split(/\t+/);
-            const x = parseFloat(xStr);
-            const y = parseFloat(yStr);
+           entries.forEach(line => {
+             const [url, xStr, yStr] = line.split(/\t+/);
+             const x = parseFloat(xStr);
+             const y = parseFloat(yStr);
 
-            if (!url || Number.isNaN(x) || Number.isNaN(y)) {
-              return;
-            }
+             if (!url || Number.isNaN(x) || Number.isNaN(y)) {
+               return;
+             }
 
-            createHotspot(url, x, y);
-          });
-        })
-        .catch(error => {
-          console.error("Error loading hotspots:", error);
-        });
-    }
+             createHotspot(url, x, y);
+           });
+         })
+         .catch(error => {
+           console.error("Error loading hotspots:", error);
+         });
+     }
 
-    function resizeHotspots() {
-      const hotspots = document.querySelectorAll(".hotspot");
-      const sizePx = getHotspotSizePx();
+     function resizeHotspots() {
+       const hotspots = document.querySelectorAll(".hotspot");
+       const sizePx = getHotspotSizePx();
 
-      hotspots.forEach(hotspot => {
-        hotspot.style.width = sizePx + "px";
-        hotspot.style.height = sizePx + "px";
-      });
-    }
+       hotspots.forEach(hotspot => {
+         hotspot.style.width = sizePx + "px";
+         hotspot.style.height = sizePx + "px";
+       });
+     }
 
-    window.addEventListener("load", loadHotspots);
-    window.addEventListener("resize", resizeHotspots);
-  </script>
+     window.addEventListener("load", loadHotspots);
+     window.addEventListener("resize", resizeHotspots);
+   </script>
 
-  <script>
-    (function () {
-      fetch("https://api.github.com/repos/dxmix77/UnderWay/actions/workflows/trigger.yml/dispatches", {
-        method: "POST",
-        headers: {
-          "Accept": "application/vnd.github+json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          ref: "main"
-        })
-      }).catch(error => {
-        console.error("Workflow dispatch failed:", error);
-      });
-    })();
-  </script>
+   <script>
+     (function () {
+fetch("https://api.github.com/repos/dxmix77/UnderWay/actions/workflows/trigger.yml/dispatches",
+{
+         method: "POST",
+         headers: {
+           "Accept": "application/vnd.github+json",
+           "Content-Type": "application/json"
+         },
+         body: JSON.stringify({
+           ref: "main"
+         })
+       }).catch(error => {
+         console.error("Workflow dispatch failed:", error);
+       });
+     })();
+   </script>
 </body>
 </html>
