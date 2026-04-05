@@ -158,26 +158,29 @@ document.getElementById("bg-image").clientWidth || ORIGINAL_WIDTH;
        return (HOTSPOT_SIZE_PX / ORIGINAL_WIDTH) * renderedWidth;
      }
 
-     function createHotspot(url, x, y) {
-       const container = document.getElementById("image-container");
-       const hotspot = document.createElement("div");
-       hotspot.className = "hotspot";
+     function createHotspot(url, x, y, id) {
+  const container = document.getElementById("image-container");
+  const hotspot = document.createElement("div");
+  hotspot.className = "hotspot";
+  hotspot.dataset.hotspotId = id;
 
-       const leftPercent = (x / ORIGINAL_WIDTH) * 100;
-       const topPercent = (y / ORIGINAL_HEIGHT) * 100;
-       const sizePx = getHotspotSizePx();
+  const leftPercent = (x / ORIGINAL_WIDTH) * 100;
+  const topPercent = (y / ORIGINAL_HEIGHT) * 100;
+  const sizePx = getHotspotSizePx();
 
-       hotspot.style.left = leftPercent + "%";
-       hotspot.style.top = topPercent + "%";
-       hotspot.style.width = sizePx + "px";
-       hotspot.style.height = sizePx + "px";
+  hotspot.style.left = leftPercent + "%";
+  hotspot.style.top = topPercent + "%";
+  hotspot.style.width = sizePx + "px";
+  hotspot.style.height = sizePx + "px";
 
-       hotspot.addEventListener("click", () => {
-         window.location.href = url;
-       });
+  hotspot.addEventListener("click", () => {
+    incrementHotspotCounter(id);
+    window.location.href = url;
+  });
 
-       container.appendChild(hotspot);
-     }
+  container.appendChild(hotspot);
+}
+
 
      function loadHotspots() {
        fetch("pixel_coordinates.txt")
