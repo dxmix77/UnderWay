@@ -69,7 +69,8 @@ https://xartino-karavi.gr/el/	245	151
 https://www.facebook.com/xartinokaravibookstore	194	211
 https://www.instagram.com/xartino_karavi/	270	206
 https://drive.google.com/file/d/1BTID2FPbktxm0ggKlTYH_DBseiNsi4dO/view?usp=sharing	1123	97
-https://drive.google.com/file/d/1ivohA3tEXjTlWeJCfQHI3-JvzrZ7YftO/view?usp=sharing	1218	693
+https://drive.google.com/file/d/1ivohA3tEXjTlWeJCfQHI3-JvzrZ7YftO/view?usp=drive_link	1218	693
+https://drive.google.com/file/d/1ivohA3tEXjTlWeJCfQHI3-JvzrZ7YftO/view?usp=drive_link	1151	677
 https://x.com/atrupar/status/2041938818920481157	1022	51
 https://www.youtube.com/watch?v=wpKeiJdS6XA	919	750
 https://www.tennisholdem.gr	242	40
